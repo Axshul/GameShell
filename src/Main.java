@@ -1,4 +1,5 @@
 import javax.naming.OperationNotSupportedException;
+import javax.swing.text.View;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,30 +19,55 @@ public class Main {
                 System.out.print(Header + OnLine + " | ");
                 String Line = Scan.nextLine();
 
-                if (Line.equals(":wq")) { //FOR QUIT
+
+            //FOR ADDITION OF LINE & CODEBASE
+            if (Line != "" && !Line.equals(":r") && !Line.equals(":wq") && !Line.equals(":vw") && !Line.equals(":ed")) {
+                CodeList.add(Line);
+                OnLine += 1;
+            }
+
+            if (Line.equals(":wq")) { //FOR QUIT
                     Editor = false;
                     System.out.println("WQ: Crafting Next");
-                }
-                if(Line.equals(":r")){ //FOR RUNNING CODE BASE
+            }
+
+            if(Line.equals(":r")){ //FOR RUNNING CODE BASE
                     System.out.println();
                     System.out.println("Running Current Code Base...");
                     System.out.println("Code View: "+Header);
-                    for(int view = 0; view < CodeList.size(); view++){
-                        System.out.println("----------(> "+CodeList.get(view));
-                    }
+                    ViewCode(CodeList);
                     System.out.println();
                     System.out.println("Next Action: ");
-                }
+            }
 
-                //FOR ADDITION OF LINE & CODEBASE
-                     if (Line != null) {
-                         CodeList.add(Line);
-                         OnLine += 1;
-                     }
+            if(Line.equals(":vw")){ //VIEW SNIPPET
+                System.out.println("Your Current Code Base:");
+                ViewCode(CodeList);
+            }
+
+            if(Line.equals(":ed")){ //EDIT PREV CODE
+                System.out.println("EDITING PREV LINE...");
+                System.out.println("Enter Line Number To Hop: ");
+                int LineNumber = Scan.nextInt();
+                System.out.println("Current Line["+LineNumber+"]"+" State Is: "+CodeList.get(LineNumber));
+                System.out.println("Now Edit Below, Press Enter To Finalise:");
+                String NewEdit = Scan.next(); // THIS CAUSE TROUBLE WITH " "
+                System.out.println("SAVING..");
+                CodeList.set(LineNumber, NewEdit);
+                System.out.println("Updated Code Base: ");
+                ViewCode(CodeList);
+
+            }
 
         }
 
 
 
+    }
+    //VIEW SNIPPET
+    public static void ViewCode(ArrayList CodeList) {
+        for(int view = 0; view < CodeList.size(); view++){
+            System.out.println("-----["+view+"]-----(> "+CodeList.get(view));
+        }
     }
 }
