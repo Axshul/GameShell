@@ -51,7 +51,7 @@ public class Main {
                 int LineNumber = Scan.nextInt();
                 System.out.println("Current Line["+LineNumber+"]"+" State Is: "+CodeList.get(LineNumber));
                 System.out.println("Now Edit Below, Press Enter To Finalise:");
-                String NewEdit = Scan.next(); // THIS CAUSE TROUBLE WITH " "
+                String NewEdit = Scan.nextLine(); // THIS CAUSE TROUBLE WITH " "
                 System.out.println("SAVING..");
                 CodeList.set(LineNumber, NewEdit);
                 System.out.println("Updated Code Base: ");
