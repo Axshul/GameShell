@@ -1,3 +1,4 @@
 ## Welcome To GameShell
-> **TUI** Based Collection Of Games For Your Brain
->>>>>>>>>>>>>>>### JUST PLAY
+> Your JAVA TUI Interpreter
+> > For Your CoolVibe Needs
+> > > And Debugging Desires
